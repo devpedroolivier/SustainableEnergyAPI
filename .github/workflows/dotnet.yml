@@ -41,4 +41,5 @@ jobs:
       with:
         app-name: 'SustainableEnergyAPI'
         slot-name: 'production'
-        package: ./published/MyMainProject
+        package: ./published
+
