@@ -24,7 +24,6 @@ C:\Users\poliveira.eficien.SBSP\source\repos\SustainableEnergyAPI\SustainableEne
 C:\Users\poliveira.eficien.SBSP\source\repos\SustainableEnergyAPI\SustainableEnergyAPI\obj\Debug\net6.0\staticwebassets.build.json
 C:\Users\poliveira.eficien.SBSP\source\repos\SustainableEnergyAPI\SustainableEnergyAPI\obj\Debug\net6.0\staticwebassets.development.json
 C:\Users\poliveira.eficien.SBSP\source\repos\SustainableEnergyAPI\SustainableEnergyAPI\obj\Debug\net6.0\scopedcss\bundle\SustainableEnergyAPI.styles.css
-C:\Users\poliveira.eficien.SBSP\source\repos\SustainableEnergyAPI\SustainableEnergyAPI\obj\Debug\net6.0\SustainableEnergyAPI.csproj.CopyComplete
 C:\Users\poliveira.eficien.SBSP\source\repos\SustainableEnergyAPI\SustainableEnergyAPI\obj\Debug\net6.0\SustainableEnergyAPI.dll
 C:\Users\poliveira.eficien.SBSP\source\repos\SustainableEnergyAPI\SustainableEnergyAPI\obj\Debug\net6.0\refint\SustainableEnergyAPI.dll
 C:\Users\poliveira.eficien.SBSP\source\repos\SustainableEnergyAPI\SustainableEnergyAPI\obj\Debug\net6.0\SustainableEnergyAPI.pdb
@@ -63,3 +62,4 @@ C:\Users\poliveira.eficien.SBSP\source\repos\SustainableEnergyAPI\SustainableEne
 C:\Users\poliveira.eficien.SBSP\source\repos\SustainableEnergyAPI\SustainableEnergyAPI\bin\Debug\net6.0\runtimes\win\lib\netstandard2.0\System.Runtime.Caching.dll
 C:\Users\poliveira.eficien.SBSP\source\repos\SustainableEnergyAPI\SustainableEnergyAPI\bin\Debug\net6.0\runtimes\win\lib\netstandard2.0\System.Security.Cryptography.ProtectedData.dll
 C:\Users\poliveira.eficien.SBSP\source\repos\SustainableEnergyAPI\SustainableEnergyAPI\bin\Debug\net6.0\runtimes\win\lib\netcoreapp3.0\System.Windows.Extensions.dll
+C:\Users\poliveira.eficien.SBSP\source\repos\SustainableEnergyAPI\SustainableEnergyAPI\obj\Debug\net6.0\SustainableEnergyAPI.csproj.CopyComplete

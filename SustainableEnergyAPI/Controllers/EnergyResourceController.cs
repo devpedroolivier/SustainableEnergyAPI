@@ -23,25 +23,31 @@ namespace SustainableEnergyAPI.Controllers
         {
             // Busca todos os registros do banco de dados
             var resources = await _context.EnergyResources.ToListAsync();
+            if (resources == null || resources.Count == 0)
+                return NotFound("Nenhum recurso encontrado.");
+
             return Ok(resources);
         }
 
-        // GET: api/EnergyResource/1
+        // GET: api/EnergyResource/{id}
         [HttpGet("{id}")]
         public async Task<ActionResult<EnergyResource>> GetById(int id)
         {
             // Busca o registro específico pelo ID
             var resource = await _context.EnergyResources.FindAsync(id);
             if (resource == null)
-                return NotFound();
+                return NotFound($"Recurso com ID {id} não encontrado.");
 
             return Ok(resource);
         }
 
         // POST: api/EnergyResource
         [HttpPost]
-        public async Task<ActionResult<EnergyResource>> Create(EnergyResource resource)
+        public async Task<ActionResult<EnergyResource>> Create([FromBody] EnergyResource resource)
         {
+            if (!ModelState.IsValid)
+                return BadRequest(ModelState);
+
             // Adiciona o novo recurso ao banco de dados
             _context.EnergyResources.Add(resource);
             await _context.SaveChangesAsync();
@@ -50,12 +56,15 @@ namespace SustainableEnergyAPI.Controllers
             return CreatedAtAction(nameof(GetById), new { id = resource.Id }, resource);
         }
 
-        // PUT: api/EnergyResource/1
+        // PUT: api/EnergyResource/{id}
         [HttpPut("{id}")]
-        public async Task<IActionResult> Update(int id, EnergyResource updatedResource)
+        public async Task<IActionResult> Update(int id, [FromBody] EnergyResource updatedResource)
         {
             if (id != updatedResource.Id)
                 return BadRequest("O ID no corpo da solicitação não corresponde ao ID da URL.");
+
+            if (!ModelState.IsValid)
+                return BadRequest(ModelState);
 
             // Marca a entidade como modificada para que o EF Core atualize no banco
             _context.Entry(updatedResource).State = EntityState.Modified;
@@ -68,7 +77,7 @@ namespace SustainableEnergyAPI.Controllers
             {
                 // Verifica se o recurso ainda existe antes de lançar erro
                 if (!EnergyResourceExists(id))
-                    return NotFound();
+                    return NotFound($"Recurso com ID {id} não encontrado.");
 
                 throw;
             }
@@ -76,14 +85,14 @@ namespace SustainableEnergyAPI.Controllers
             return NoContent();
         }
 
-        // DELETE: api/EnergyResource/1
+        // DELETE: api/EnergyResource/{id}
         [HttpDelete("{id}")]
         public async Task<IActionResult> Delete(int id)
         {
             // Busca o recurso pelo ID
             var resource = await _context.EnergyResources.FindAsync(id);
             if (resource == null)
-                return NotFound();
+                return NotFound($"Recurso com ID {id} não encontrado.");
 
             // Remove o recurso do banco de dados
             _context.EnergyResources.Remove(resource);
