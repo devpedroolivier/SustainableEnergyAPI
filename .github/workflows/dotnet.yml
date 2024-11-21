@@ -40,6 +40,6 @@ jobs:
       uses: azure/webapps-deploy@v2
       with:
         app-name: 'SustainableEnergyAPI'
-        slot-name: 'production'
         package: ./published
+
 
