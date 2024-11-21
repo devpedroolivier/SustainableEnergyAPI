@@ -25,7 +25,7 @@ jobs:
 
     # Login no Azure com as credenciais configuradas
     - name: Login to Azure
-      uses: azure/login@v1
+      uses: azure/login@v1.4.0
       with:
         creds: ${{ secrets.AZURE_CREDENTIALS }}
 
@@ -36,6 +36,10 @@ jobs:
     # Compilação do projeto .NET
     - name: Build
       run: dotnet build --no-restore
+
+    # Execução de testes
+    - name: Run Tests
+      run: dotnet test
 
     # Publicação do projeto para gerar artefatos
     - name: Publish
