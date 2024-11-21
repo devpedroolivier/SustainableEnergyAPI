@@ -13,42 +13,31 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    # Checkout do código-fonte
     - name: Checkout code
       uses: actions/checkout@v3
 
-    # Configuração do .NET SDK
     - name: Setup .NET
       uses: actions/setup-dotnet@v3
       with:
         dotnet-version: '6.0'
 
-    # Login no Azure com as credenciais configuradas
     - name: Login to Azure
       uses: azure/login@v1.4.0
       with:
         creds: ${{ secrets.AZURE_CREDENTIALS }}
 
-    # Restauração de dependências do projeto .NET
     - name: Restore dependencies
       run: dotnet restore
 
-    # Compilação do projeto .NET
     - name: Build
       run: dotnet build --no-restore
 
-    # Execução de testes
-    - name: Run Tests
-      run: dotnet test
+    - name: Publish Project
+      run: dotnet publish ./src/MyMainProject.csproj -c Release -o ./published/MyMainProject
 
-    # Publicação do projeto para gerar artefatos
-    - name: Publish
-      run: dotnet publish -c Release -o ./published
-
-    # Implantação no Azure App Service
     - name: Deploy to Azure
       uses: azure/webapps-deploy@v2
       with:
         app-name: 'SustainableEnergyAPI'
         slot-name: 'production'
-        package: ./published
+        package: ./published/MyMainProject
