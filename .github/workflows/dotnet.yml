@@ -33,7 +33,8 @@ jobs:
       run: dotnet build --no-restore
 
     - name: Publish Project
-      run: dotnet publish ./src/MyMainProject.csproj -c Release -o ./published/MyMainProject
+      run: dotnet publish ./SustainableEnergyAPI/SustainableEnergyAPI.csproj -c Release -o ./published
+
 
     - name: Deploy to Azure
       uses: azure/webapps-deploy@v2
