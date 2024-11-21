@@ -1,0 +1,45 @@
+name: Build, Test, and Deploy
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v3
+
+    - name: Setup .NET
+      uses: actions/setup-dotnet@v3
+      with:
+        dotnet-version: '6.0'
+
+    - name: Login to Azure
+      uses: azure/login@v1.4.0
+      with:
+        creds: ${{ secrets.AZURE_CREDENTIALS }}
+
+    - name: Restore dependencies
+      run: dotnet restore
+
+    - name: Build
+      run: dotnet build --no-restore
+
+    - name: Publish Project
+      run: dotnet publish ./SustainableEnergyAPI/SustainableEnergyAPI.csproj -c Release -o ./published
+
+
+    - name: Deploy to Azure
+      uses: azure/webapps-deploy@v2
+      with:
+        app-name: 'SustainableEnergyAPI'
+        package: ./published
+
+
