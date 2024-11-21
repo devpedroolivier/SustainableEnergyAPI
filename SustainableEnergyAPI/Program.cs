@@ -15,11 +15,12 @@ builder.Services.AddDbContext<ApplicationDbContext>(options =>
 var app = builder.Build();
 
 // Configure o pipeline de requisição HTTP
-if (app.Environment.IsDevelopment())
+app.UseSwagger();
+app.UseSwaggerUI(c =>
 {
-    app.UseSwagger();
-    app.UseSwaggerUI();
-}
+    c.SwaggerEndpoint("/swagger/v1/swagger.json", "SustainableEnergyAPI v1");
+    c.RoutePrefix = string.Empty; // Faz o Swagger aparecer na URL raiz
+});
 
 app.UseHttpsRedirection();
 
