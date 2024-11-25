@@ -4,7 +4,7 @@
 
 namespace SustainableEnergyAPI.Migrations
 {
-    public partial class FixTableName : Migration
+    public partial class RemoveEnergySourceIdColumn : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {

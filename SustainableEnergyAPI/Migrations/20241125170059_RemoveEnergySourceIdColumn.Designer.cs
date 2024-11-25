@@ -11,8 +11,8 @@ using SustainableEnergyAPI.Data;
 namespace SustainableEnergyAPI.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20241119190218_FixTableName")]
-    partial class FixTableName
+    [Migration("20241125170059_RemoveEnergySourceIdColumn")]
+    partial class RemoveEnergySourceIdColumn
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
